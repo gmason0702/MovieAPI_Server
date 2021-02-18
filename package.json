@@ -1,5 +1,5 @@
 {
-  "name": "node-modules-server",
+  "name": "movie-radar",
   "version": "1.0.0",
   "description": "MovieAPI",
   "main": "app.js",

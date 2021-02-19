@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 let express = require("express");
 let app = express();
 const sequelize = require("./db");
@@ -6,12 +6,13 @@ const sequelize = require("./db");
 let favorite = require("./controllers/favoritecontroller");
 let user = require("./controllers/usercontroller");
 
+
 sequelize.sync();
 // app.use(require("./middleware/headers"));
 
 app.use(express.json());
 
-// app.use("/user", user);
+app.use("/user", user);
 
 app.use("/favorite", favorite);
 

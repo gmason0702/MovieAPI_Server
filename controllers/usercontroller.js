@@ -1,6 +1,6 @@
-
-const router = require("express").Router();
-const {User} = require("../db").import("../models/user")
+const express = require("express");
+const router = express.Router();
+const User = require("../db").import("../models/user")
 
 const bcrypt = require("bcryptjs");
 const jwt = require ("jsonwebtoken");
@@ -33,6 +33,7 @@ router.post("/signup", async (req, res) => {
         res.status(500).json({ error: err });
       });
   });
+
 /*LOGIN*/
 router.post("/login", async (req, res) => {
   User.findOne({ where: { email: req.body.user.email } })

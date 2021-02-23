@@ -1,4 +1,4 @@
-const {Sequelize} =require ('sequelize'); 
+const Sequelize = require ('sequelize'); 
 
 const sequelize = new Sequelize (
     process.env.DB_NAME, 
@@ -13,7 +13,7 @@ const sequelize = new Sequelize (
 sequelize
     .authenticate()
     .then(() => {
-        console.log("connected to moive-radar postgres database");
+        console.log("connected to movie-radar postgres database");
     })
     .catch ((err) => {
         console.log("Unable to connect to the database:", err);

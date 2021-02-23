@@ -28,4 +28,3 @@ const { sequelize } = require('sequelize/lib/model');
    
   });
 module.exports = User;
-

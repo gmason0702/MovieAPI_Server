@@ -33,6 +33,7 @@ router.post("/signup", async (req, res) => {
         res.status(500).json({ error: err });
       });
   });
+
 /*LOGIN*/
 router.post("/login", async (req, res) => {
   User.findOne({ where: { email: req.body.user.email } })

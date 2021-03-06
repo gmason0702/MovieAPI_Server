@@ -4,10 +4,17 @@ const validateSession = require("../middleware/validate-session");
 const Favorite = require("../db").import("../models/favorite");
 
 router.post("/create", validateSession, (req, res) => {
+  console.log(req.body, req.user);
   const favoriteCreate = {
     review: req.body.favorite.review,
-    rating: req.body.favorite.rating,
+    personalRating: req.body.favorite.personalRating,
     owner: req.user.id,
+    movieId: req.body.favorite.movieId,
+    movieTitle: req.body.favorite.movieTitle,
+    overview: req.body.favorite.overview,
+    posterPath: req.body.favorite.posterPath,
+    releaseDate: req.body.favorite.releaseDate,
+    vote_average: req.body.favorite.vote_average,
   };
   Favorite.create(favoriteCreate)
     .then((favorite) => res.status(200).json(favorite))
@@ -32,7 +39,7 @@ router.get("/mine", validateSession, (req, res) => {
 router.put("/update/:entryId", validateSession, (req, res) => {
   const updateFavorites = {
     review: req.body.favorite.review,
-    rating: req.body.favorite.rating,
+    personalRating: req.body.favorite.rating,
   };
   const query = { where: { id: req.params.entryId, owner: req.user.id } };
 
@@ -42,7 +49,7 @@ router.put("/update/:entryId", validateSession, (req, res) => {
 });
 
 router.delete("/delete/:id", validateSession, (req, res) => {
-  const query = { where: { id: req.params.id, owner: req.user.id } };
+  const query = { where: { movieId: req.params.id, owner: req.user.id } };
 
   Favorite.destroy(query)
     .then(() => res.status(200).json({ message: "Favorite removed" }))

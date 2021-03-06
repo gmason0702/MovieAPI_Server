@@ -24,5 +24,5 @@ app.use("/user", user);
 app.use("/favorite", favorite);
 
 app.listen(3000, function () {
-  console.log("App is listening on port 3000");
+  console.log(`server is listening on port ${process.env.PORT}`);
 });

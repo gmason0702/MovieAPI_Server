@@ -28,8 +28,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/mine", validateSession, (req, res) => {
+  const getFavorites = {
+    vote_average: req.body.favorite.vote_average,
+  };
   let userId = req.user.id;
-  Favorite.findAll({
+  Favorite.findAll(getFavorites, {
     where: { owner: userId },
   })
     .then((favorites) => res.status(200).json(favorites))
@@ -41,7 +44,7 @@ router.put("/update/:entryId", validateSession, (req, res) => {
     review: req.body.favorite.review,
     personalRating: req.body.favorite.rating,
   };
-  const query = { where: { id: req.params.entryId, owner: req.user.id } };
+  const query = { where: { movieId: req.params.entryId, owner: req.user.id } };
 
   Favorite.update(updateFavorites, query)
     .then((favorites) => res.status(200).json(favorites))

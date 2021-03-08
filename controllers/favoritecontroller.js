@@ -28,11 +28,8 @@ router.get("/", (req, res) => {
 });
 
 router.get("/mine", validateSession, (req, res) => {
-  const getFavorites = {
-    vote_average: req.body.favorite.vote_average,
-  };
   let userId = req.user.id;
-  Favorite.findAll(getFavorites, {
+  Favorite.findAll({
     where: { owner: userId },
   })
     .then((favorites) => res.status(200).json(favorites))

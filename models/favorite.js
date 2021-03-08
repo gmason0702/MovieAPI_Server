@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    movieTitle: {
+    title: {
       type: DataTypes.STRING,
       allowNull: true,
     },
@@ -25,16 +25,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
 
-    posterPath: {
+    poster_path: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    releaseDate: {
+    release_date: {
       type: DataTypes.STRING,
       allowNull: true,
     },
     vote_average: {
-      type: DataTypes.NUMERIC(2, 1),
+      type: DataTypes.STRING,
       allowNull: true,
     },
   });

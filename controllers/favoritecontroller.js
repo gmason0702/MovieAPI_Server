@@ -10,10 +10,10 @@ router.post("/create", validateSession, (req, res) => {
     personalRating: req.body.favorite.personalRating,
     owner: req.user.id,
     movieId: req.body.favorite.movieId,
-    movieTitle: req.body.favorite.movieTitle,
+    title: req.body.favorite.title,
     overview: req.body.favorite.overview,
-    posterPath: req.body.favorite.posterPath,
-    releaseDate: req.body.favorite.releaseDate,
+    poster_path: req.body.favorite.poster_path,
+    release_date: req.body.favorite.release_date,
     vote_average: req.body.favorite.vote_average,
   };
   Favorite.create(favoriteCreate)
